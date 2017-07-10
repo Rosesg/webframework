@@ -58,6 +58,8 @@ public class DatabaseHelperOptimize {
 
     /**
      * 查询实体列表
+     *      如果频繁调用getConnection()就会频繁的创建数据库来凝结，这样就会造成大量的系统开销，毕竟数据库的连接是有限的。
+     *      因此，将这些数据库连接进行“池化”。
      */
     public static <T> List<T> queryEntityList(Class<T> entityClass, String sql, Object... params) {
         List<T> entityList;
